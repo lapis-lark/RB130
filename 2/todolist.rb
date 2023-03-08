@@ -34,7 +34,7 @@ class Todo
 end
 
 class TodoList
-  attr_accessor :title
+  attr_accessor :title, :todos
 
   def initialize(title)
     @title = title
@@ -119,11 +119,11 @@ class TodoList
   end
 
   def mark_done_at(n)
-    todos[n].done!
+    todos.fetch(n).done!
   end
 
   def mark_undone_at(n)
-    todos[n].undone!
+    todos.fetch(n).undone!
   end
 
   def done!
@@ -139,15 +139,13 @@ class TodoList
   end
 
   def remove_at(n)
+    todos.fetch(n) # to return IndexError instead of nil when out of range
     todos.delete_at(n)
   end
 
   def to_s
     "--- #{title} ---\n" + todos.join("\n")
   end
-
-  protected
-  attr_accessor :todos
 end
 todo1 = Todo.new("Buy milk")
 todo2 = Todo.new("Clean room")

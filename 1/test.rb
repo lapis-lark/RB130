@@ -1,9 +1,8 @@
+# in temp.rb
+require 'minitest/autorun'
 
-loop do 
-  name = 'juli'
-  chunk = Proc.new {puts "hi #{name}" }
-  chunk.call
-  break
+class MyFirstTest < Minitest::Test
+  def test_first_test
+    assert true
+  end
 end
-
-chunk.call
