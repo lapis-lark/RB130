@@ -118,8 +118,54 @@ class TodoListTest < MiniTest::Test
     assert_equal(@list.size + 1, initial_size)
   end
 
-  def test_to_s
+  def test_to_s_undone
+    setup
+    output = <<~OUTPUT.chomp
+    ---- Today's Todos ----
+    [ ] Buy milk
+    [ ] Clean room
+    [ ] Go to gym
+    OUTPUT
+  
+    assert_equal(output, @list.to_s)
+  end
 
+  def test_to_s_one_done
+    @list.mark_done_at(1)
+    output = <<~OUTPUT.chomp
+    ---- Today's Todos ----
+    [ ] Buy milk
+    [X] Clean room
+    [ ] Go to gym
+    OUTPUT
+  
+    assert_equal(output, @list.to_s)
+  end
+
+  def test_to_s_all_done
+    @list.done!
+    output = <<~OUTPUT.chomp
+    ---- Today's Todos ----
+    [X] Buy milk
+    [X] Clean room
+    [X] Go to gym
+    OUTPUT
+  
+    assert_equal(output, @list.to_s)
+  end
+
+  def test_each
+    comparison_string = ''
+    @list.each { |_| comparison_string << 'x' } 
+    assert_equal(comparison_string, 'xxx')
+  end
+
+  def test_each_returns_self
+    assert_same(@list.each, @list)
+  end
+
+  def test_select_return
+    assert_instance_of(TodoList, @list.select {})
   end
 
 

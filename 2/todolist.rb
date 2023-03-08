@@ -43,7 +43,7 @@ class TodoList
 
   def each
     for todo in self.todos
-      yield(todo)
+      yield(todo) if block_given?
     end
 
     self
@@ -144,7 +144,12 @@ class TodoList
   end
 
   def to_s
-    "--- #{title} ---\n" + todos.join("\n")
+    "---- #{title} ----\n" + todos.join("\n")
+  end
+
+  def ==(other_list)
+    self.title == other_list.title &&
+    self.todos == other_list.todos
   end
 end
 todo1 = Todo.new("Buy milk")
