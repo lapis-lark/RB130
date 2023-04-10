@@ -1,15 +1,3 @@
-=begin
-  create a clock class; the class itself should contain the hour/minute c vars
-  create the following class methods
-      #at - set the time to the arguments specified, 00:00 by default
-      #to_s
-      #+ - add time, handling any amount of minutes(accept minutes in integer form)
-      #-
-  DATA: Clock class, integers for hours minutes, output strings
-
-
-=end
-
 class Clock
   attr_accessor :hour, :minute
 
@@ -47,6 +35,20 @@ class Clock
   private 
   attr_accessor :hour, :minute
 end
+
+=begin
+  create a clock class; the class itself should contain the hour/minute c vars
+  create the following class methods
+      #at - set the time to the arguments specified, 00:00 by default
+      #to_s
+      #+ - add time, handling any amount of minutes(accept minutes in integer form)
+      #-
+  DATA: Clock class, integers for hours minutes, output strings
+
+
+=end
+
+
 
 
 puts clock = Clock.at(0, 30) - 60

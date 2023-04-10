@@ -1,3 +1,41 @@
+class Clock
+  attr_accessor :hour, :minute
+
+  def self.at(hour = 0, minute = 0)
+    Clock.new(hour, minute)
+  end
+
+  def initialize(hour, minute)
+    @hour = hour
+    @minute = minute
+    self.clone
+  end
+
+  def to_s
+    "#{"%02d" % hour}:#{"%02d" % minute}"
+  end
+
+  def +(plus_minutes)
+    plus_hours = plus_minutes / 60
+    plus_minutes %= 60
+    added_hour = (hour + plus_hours) % 24
+    added_hour += 1 if minute + plus_minutes >= 60
+    added_minute = (minute + plus_minutes) % 60
+    Clock.at(added_hour, added_minute)
+  end
+
+  def -(minutes)
+    self + (-minutes)
+  end
+
+  def ==(other_clock)
+    self.to_s == other_clock.to_s
+  end
+
+  private 
+  attr_accessor :hour, :minute
+end
+
 =begin
   create a clock class; the class itself should contain the hour/minute c vars
   create the following class methods
@@ -10,41 +48,7 @@
 
 =end
 
-class Clock
-  @@hour = 0
-  @@minute = 0
 
-  def self.to_s
-    "#{"%02d" % @@hour}:#{"%02d" % @@minute}"
-  end
 
-  def self.at(hour = 0, minute = 0)
-    @@hour = hour
-    @@minute = minute
-    self.clone
-  end
 
-  def self.+(minutes)
-    hours = minutes / 60
-    minutes %= 60
-    added_hour = (@@hour + hours) % 24
-    added_hour += 1 if @@minute + minutes >= 60
-    added_minute = (@@minute + minutes) % 60
-    "#{"%02d" % added_hour}:#{"%02d" % added_minute}"
-  end
-
-  def self.-(minutes)
-    self.+(-minutes)
-  end
-
-  def self.==(other_clock)
-    self.to_s == other_clock.to_s
-  end
-end
-
-clock1 = Clock.at(15, 37)
-clock2 = Clock.at(15, 36)
-
-puts clock1
-puts clock2
-puts clock1 == clock2
+puts clock = Clock.at(0, 30) - 60
