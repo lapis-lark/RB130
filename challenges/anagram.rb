@@ -19,6 +19,3 @@ class Anagram
     result
   end
 end
-
-x = Anagram.new('hi')
-p x
