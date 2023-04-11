@@ -1,17 +1,3 @@
-# frozen_string_literal: true
-
-#   PROBLEM:
-#     build a class that accepts an integer up to 3000 when intializing a new object
-#     this class should have the following methods:
-#       #to_roman - convert to roman numerals (string)
-#   Examples
-#     RomanNumeral.new(10).to_roman == 'X'
-#   DATA: integers, strings
-#   ALGO:
-#     test how many thousands, hundreds, tens, ones
-#     concatenate appropriate substring to result, working from largest units to smallest
-#
-
 class RomanNumeral
   GROUPS = { thousands: [1000, 'M', nil, nil],
              hundreds: [100, 'C', 'D', 'M'],
@@ -48,3 +34,19 @@ class RomanNumeral
     end
   end
 end
+
+
+# frozen_string_literal: true
+
+#   PROBLEM:
+#     build a class that accepts an integer up to 3000 when intializing a new object
+#     this class should have the following methods:
+#       #to_roman - convert to roman numerals (string)
+#   Examples
+#     RomanNumeral.new(10).to_roman == 'X'
+#   DATA: integers, strings
+#   ALGO:
+#     test how many thousands, hundreds, tens, ones
+#     concatenate appropriate substring to result, working from largest units to smallest
+#
+
