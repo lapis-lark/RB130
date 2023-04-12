@@ -1,10 +1,6 @@
 class Octal
   def initialize(oct)
-    @oct = valid?(oct) ? oct : '0'
-  end
-
-  def valid?(num)
-    num.chars.all? {|n| n =~ /[0-7]/}
+    @oct = oct =~ /[^0-7]/ ? '0' : oct
   end
 
   def to_decimal
