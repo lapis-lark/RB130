@@ -1,27 +1,3 @@
-=begin
-  PROBLEM:
-    create a Meetup class which accepts a year and a month
-    create a #day instance method which accepts a day and a descriptor (case insensitive)
-    #day returns a Date object which matches the criteria
-
-  EXAMPLES:
-    return nil if the date described does not exist (e.g. fifth sunday, but only four that month)
-
-
-  DATA:
-    Date objects
-    strings
-    ints
-
-  ALGO:
-    write #new method which sets up instance vars for year, month
-    #day
-      generate arr of all that day of week in given month/year
-      return appropriate date from arr based on the descriptor
-
-
-=end
-
 require 'date'
 
 class Meetup
@@ -62,4 +38,27 @@ class Meetup
   end
 end
 
-puts (Date.civil(2016, 8, 27) == Meetup.new(2016, 8).day('Saturday', 'last'))
+=begin
+  PROBLEM:
+    create a Meetup class which accepts a year and a month
+    create a #day instance method which accepts a day and a descriptor (case insensitive)
+    #day returns a Date object which matches the criteria
+
+  EXAMPLES:
+    return nil if the date described does not exist (e.g. fifth sunday, but only four that month)
+
+
+  DATA:
+    Date objects
+    strings
+    ints
+
+  ALGO:
+    write #new method which sets up instance vars for year, month
+    #day
+      generate arr of all that day of week in given month/year
+      return appropriate date from arr based on the descriptor
+
+
+=end
+
