@@ -92,4 +92,19 @@
     However, RSpec uses a domain specific language (DSL) to make it read more like English (at the expense of begin substantially more complicate)
     Miinitest, however, reads like regular Ruby :)
 
-  
+  Purpose of core tools:
+    Rubygems: packages of code that you can download and use in your programs or from command line
+
+    RVM/RBenv: ruby version managers; certain projects rely on features specific to one version of ruby, so switching ruby version easily is important
+
+    Bundler: a dependency manager for ruby; like version managers for ruby, but for ruby gems instead
+
+    uses a Gemfile to tell it which version of ruby and gems to uses; DSL used in the Gemfile
+
+    then run "bundle install" to install necessary gems and create a Gemfile.lock file with information about everything installed
+
+    Rake: a gem that automates common tasks for building, testing, packaging, installing programs; automatically installed
+
+    Minitest/Rspec: testing libraries! ensures everything working, including after changes to the project
+
+  end
